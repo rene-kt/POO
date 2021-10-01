@@ -2,17 +2,17 @@
 #include <vector>
 using namespace std;
 
-// 0 for false and 1 for true
+
 // EXISTE method
-int checkIfGivenValueContainsInTheArray(vector<int> array, int value)
+bool checkIfGivenValueContainsInTheArray(vector<int> array, int value)
 {
 
     for (int i = 0; i < array.size(); i++)
     {
         if (array[i] == value)
-            return 1;
+            return true;
     }
-    return 0;
+    return false;
 }
 
 // CONTAR method
@@ -137,7 +137,7 @@ int returnAverageStress(vector<int> array)
     return (float)sum / array.size();
 }
 // MAIS_HOMENS_OU_MULHERES method
-int itHasMoreMenOrWomen(vector<int> array)
+string itHasMoreMenOrWomen(vector<int> array)
 {
     int men = 0;
     int women = 0;
@@ -149,12 +149,16 @@ int itHasMoreMenOrWomen(vector<int> array)
         if (array[i] < 0)
             women++;
     }
-    // 0 = men and 1 = women
-    return men > women ? 0 : 1;
+
+    if(men>women) return "Men";
+    if (women>men) return "Women";
+    if (women == men) return "Draw";
+    return "";
+    
 }
 
 // QUAL_METADE_EH_MAIS_ESTRESSADA
-int whichPartIsMoreStressed(vector<int> array)
+string whichPartIsMoreStressed(vector<int> array)
 {
 
     int half_start = 0;
@@ -182,8 +186,9 @@ int whichPartIsMoreStressed(vector<int> array)
                 half_end += array[i];
         }
 
-        // 0 = half start and 1 = half_end
-        return half_start > half_end ? 0 : 1;
+        if(half_start > half_end) return "Half start";
+        if(half_start < half_end) return "Half end";
+        if (half_start == half_end) return "Draw";
     }
     else
     {
@@ -202,21 +207,22 @@ int whichPartIsMoreStressed(vector<int> array)
             else
                 half_end += array[i];
         }
-
-        // 0 = half start and 1 = half_end
-        return half_start > half_end ? 0 : 1;
+       if(half_start > half_end) return "Half start";
+        if(half_start < half_end) return "Half end";
+        if (half_start == half_end) return "Draw";
     }
+    return "";
 }
 
 // HOMENS_SAO_MAIS_ESTRESSADOS_QUE_MULHERES method
 
-int menAreMoreStressedThanWomen(vector<int> array){
+string menAreMoreStressedThanWomen(vector<int> array){
     int men = 0;
     int sum_men = 0;
 
     int women = 0;
     int sum_women = 0;
-
+    
     for(int i = 0; i<array.size(); i++){
 
 
@@ -231,13 +237,19 @@ int menAreMoreStressedThanWomen(vector<int> array){
 
     }
 
-    // 0 = men and 1 = women
-    return (sum_men / men) > (sum_women / women) ? 0 : 1;
+    float averageMan = sum_men / men;
+    float averageWoman = sum_women / women;
+    
+   
+    if(averageMan > averageWoman) return "Man";
+    if(averageMan < averageWoman) return "Woman";
+    if(averageMan == averageWoman) return "Draw";
+    return "";
 
 }
 
 int main()
 {
-    std::cout << returnSmallestValue({5,6,7,-20,-50, -70, 10}) << '\n';
+    std::cout << checkIfGivenValueContainsInTheArray({5,6,7,-20,-50, -70, 10}, 10) << '\n';
     return 0;
 }
