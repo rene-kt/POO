@@ -1,38 +1,39 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // 0 for false and 1 for true
 // EXISTE method
-int checkIfGivenValueContainsInTheArray(int arr[], int arr_size, int value)
+int checkIfGivenValueContainsInTheArray(vector<int> array, int value)
 {
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] == value)
+        if (array[i] == value)
             return 1;
     }
     return 0;
 }
 
 // CONTAR method
-int countHowManyTimesValueIsPresentInTheArray(int arr[], int arr_size, int value)
+int countHowManyTimesValueIsPresentInTheArray(vector<int> array, int value)
 {
     int counter = 0;
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] == value)
+        if (array[i] == value)
             counter++;
     }
     return counter;
 }
 
 // PROCURAR method
-int returnPositionOfTheValue(int arr[], int arr_size, int value)
+int returnPositionOfTheValue(vector<int> array, int value)
 {
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] == value)
+        if (array[i] == value)
             return i;
     }
     return -1;
@@ -40,112 +41,112 @@ int returnPositionOfTheValue(int arr[], int arr_size, int value)
 
 // PROCURAR_APOS method
 
-int returnPositionOfTheValueAfterGivenValue(int arr[], int arr_size, int value, int initialPosition)
+int returnPositionOfTheValueAfterGivenValue(vector<int> array, int value, int initialPosition)
 {
 
-    for (int i = initialPosition; i < arr_size; i++)
+    for (int i = initialPosition; i < array.size(); i++)
     {
-        if (arr[i] == value)
+        if (array[i] == value)
             return i;
     }
     return -1;
 }
 
 // PROCURAR_MENOR method
-int returnSmallestValue(int arr[], int arr_size)
+int returnSmallestValue(vector<int> array)
 {
 
-    int smallestValue = arr[0];
+    int smallestValue = array[0];
 
-    for (int i = 1; i < arr_size; i++)
+    for (int i = 1; i < array.size(); i++)
     {
-        if (arr[i] < smallestValue)
-            smallestValue = arr[i];
+        if (array[i] < smallestValue)
+            smallestValue = array[i];
     }
     return smallestValue;
 }
 
 // PROCURAR_MAIOR method
-int returnGreatestValue(int arr[], int arr_size)
+int returnGreatestValue(vector<int> array)
 {
-    int greatestValue = arr[0];
+    int greatestValue = array[0];
 
-    for (int i = 1; i < arr_size; i++)
+    for (int i = 1; i < array.size(); i++)
     {
-        if (arr[i] > greatestValue)
-            greatestValue = arr[i];
+        if (array[i] > greatestValue)
+            greatestValue = array[i];
     }
     return greatestValue;
 }
 
 // PROCURAR_MENOR_POS method
-int returnPositionOfTheSmallestValue(int arr[], int arr_size)
+int returnPositionOfTheSmallestValue(vector<int> array)
 {
 
-    int smallestValue = returnSmallestValue(arr, arr_size);
+    int smallestValue = returnSmallestValue(array);
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] == smallestValue)
+        if (array[i] == smallestValue)
             return i;
     }
     return -1;
 }
 // PROCURAR_MENOR_POS_APOS method
-int returnPositionOfTheSmallestValueAfterGivenValue(int arr[], int arr_size, int position)
+int returnPositionOfTheSmallestValueAfterGivenValue(vector<int> array, int position)
 {
 
-    int smallestValue = arr[position + 1];
+    int smallestValue = array[position + 1];
 
-    for (int i = position + 1; i < arr_size; i++)
+    for (int i = position + 1; i < array.size(); i++)
     {
-        if (arr[i] < smallestValue)
-            smallestValue = arr[i];
+        if (array[i] < smallestValue)
+            smallestValue = array[i];
     }
 
-    return returnPositionOfTheValue(arr, arr_size, smallestValue);
+    return returnPositionOfTheValue(array, smallestValue);
 }
 
 // PROCURAR_MELHOR_SE method
-int returnPositionOfTheSmallestValueOfAMan(int arr[], int arr_size)
+int returnPositionOfTheSmallestValueOfAMan(vector<int> array)
 {
-    int smallestValue = arr[0];
+    int smallestValue = array[0];
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] > 0 && arr[i] < smallestValue)
-            smallestValue = arr[i];
+        if (array[i] > 0 && array[i] < smallestValue)
+            smallestValue = array[i];
     }
-    return returnPositionOfTheValue(arr, arr_size, smallestValue);
+    return returnPositionOfTheValue(array, smallestValue);
 }
 
 // CALCULAR_STRESS_MEDIO method
-int returnAverageStress(int arr[], int arr_size)
+int returnAverageStress(vector<int> array)
 {
 
     int sum = 0;
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
 
-        if (arr[i] < 0)
-            sum += arr[i] * -1;
+        if (array[i] < 0)
+            sum += array[i] * -1;
         else
-            sum += arr[i];
+            sum += array[i];
     }
-    return (float)sum / arr_size;
+    return (float)sum / array.size();
 }
 // MAIS_HOMENS_OU_MULHERES method
-int itHasMoreMenOrWomen(int arr[], int arr_size)
+int itHasMoreMenOrWomen(vector<int> array)
 {
     int men = 0;
     int women = 0;
 
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < array.size(); i++)
     {
-        if (arr[i] > 0)
+        if (array[i] > 0)
             men++;
-        if (arr[i] < 0)
+        if (array[i] < 0)
             women++;
     }
     // 0 = men and 1 = women
@@ -153,32 +154,32 @@ int itHasMoreMenOrWomen(int arr[], int arr_size)
 }
 
 // QUAL_METADE_EH_MAIS_ESTRESSADA
-int whichPartIsMoreStressed(int arr[], int arr_size)
+int whichPartIsMoreStressed(vector<int> array)
 {
 
     int half_start = 0;
     int half_end = 0;
 
-    if (arr_size % 2 == 0)
+    if (array.size() % 2 == 0)
     {
-        for (int i = 0; i < arr_size; i++)
+        for (int i = 0; i < array.size(); i++)
         {
 
-            if (i < (arr_size / 2))
+            if (i < (array.size() / 2))
             {
-                if (arr[i] < 0)
+                if (array[i] < 0)
 
-                    half_start += arr[i] * -1;
+                    half_start += array[i] * -1;
                 else
-                    half_start += arr[i];
+                    half_start += array[i];
             }
 
             else
 
-                if (arr[i] < 0)
-                half_end += arr[i] * -1;
+                if (array[i] < 0)
+                half_end += array[i] * -1;
             else
-                half_end += arr[i];
+                half_end += array[i];
         }
 
         // 0 = half start and 1 = half_end
@@ -187,19 +188,19 @@ int whichPartIsMoreStressed(int arr[], int arr_size)
     else
     {
         // removing the last element to make it equal
-        for (int i = 0; i < arr_size - 1; i++)
+        for (int i = 0; i < array.size() - 1; i++)
         {
 
-            if (i < (arr_size / 2))
+            if (i < (array.size() / 2))
             {
-                if (arr[i] < 0)
-                    half_start += arr[i] * -1;
-                half_start += arr[i];
+                if (array[i] < 0)
+                    half_start += array[i] * -1;
+                half_start += array[i];
             }
-            else if (arr[i] < 0)
-                half_end += arr[i] * -1;
+            else if (array[i] < 0)
+                half_end += array[i] * -1;
             else
-                half_end += arr[i];
+                half_end += array[i];
         }
 
         // 0 = half start and 1 = half_end
@@ -209,23 +210,23 @@ int whichPartIsMoreStressed(int arr[], int arr_size)
 
 // HOMENS_SAO_MAIS_ESTRESSADOS_QUE_MULHERES method
 
-int menAreMoreStressedThanWomen(int arr[], int arr_size){
+int menAreMoreStressedThanWomen(vector<int> array){
     int men = 0;
     int sum_men = 0;
 
     int women = 0;
     int sum_women = 0;
 
-    for(int i = 0; i<arr_size; i++){
+    for(int i = 0; i<array.size(); i++){
 
 
-        if(arr [i] < 0){
+        if(array [i] < 0){
             women++;
-            sum_women += arr[i] * -1;
+            sum_women += array[i] * -1;
         }
-        if(arr[i] > 0){
+        if(array[i] > 0){
             men++;
-            sum_men += arr[i];
+            sum_men += array[i];
         }
 
     }
@@ -237,7 +238,6 @@ int menAreMoreStressedThanWomen(int arr[], int arr_size){
 
 int main()
 {
-    int array[6] = {-4, -2, -5, -10, -12, 85};
-    std::cout << menAreMoreStressedThanWomen(array, 6) << '\n';
+    std::cout << returnSmallestValue({5,6,7,-20,-50, -70, 10}) << '\n';
     return 0;
 }
