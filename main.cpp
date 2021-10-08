@@ -248,8 +248,10 @@ string menAreMoreStressedThanWomen(vector<int> array){
 
 }
 
+
+
 int main()
 {
-    std::cout << checkIfGivenValueContainsInTheArray({5,6,7,-20,-50, -70, 10}, 10) << '\n';
+
     return 0;
 }
