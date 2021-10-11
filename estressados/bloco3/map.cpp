@@ -5,7 +5,7 @@
 using namespace std;
 
 
-//{1, 3, 4, 3, -1, -3, -3} -> {4}
+
 vector<int> sozinhos(vector<int> v)
 
 {
@@ -30,10 +30,7 @@ vector<int> sozinhos(vector<int> v)
             counter = 0;
     }
 
-    for (int i = 0; i < sozinhos.size(); i++)
-    {
-        cout << sozinhos[i] << '\n';
-    }
+   
 
     return sozinhos;
 }
@@ -69,5 +66,6 @@ int mais_ocorrencias(vector<int> v)
 
 int main()
 {   
+    sozinhos({1,2,2,3,3,4,4,7});
     return 0;
 }
