@@ -1,32 +1,160 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-class Grafite {
-     float calibre;
-     string dureza;
-     int tamanho;
+struct Grafite
+{
 
-     public: 
+    float calibre{0.0};
+    string dureza{"HB"};
+    int tamanho{0};
 
-
-    Grafite(float, string, int); 
-
-    Grafite::Grafite(float c, string d, int t) { 
-        calibre = c;
-        dureza = d;
-        tamanho = t;
+    Grafite(float calibre = 0, string dureza = "", int tamanho = 0) : calibre{calibre}, dureza{dureza}, tamanho{tamanho}
+    {
     }
 
-    void toString(Grafite grafite){
-        cout << grafite.calibre << '\n';
-        cout << grafite.dureza << '\n';
-        cout << grafite.tamanho << '\n';
+    string toString()
+    {
+        string object = "Calibre: " + to_string(calibre) + "\n" + "Dureza: " + dureza + "\n" + "Tamanho: " + to_string(tamanho) + "\n";
+        cout << object << '\n';
+        return object;
+    }
+};
+
+struct Lapiseira
+{
+    float calibre{0.0};
+    Grafite grafite{0.0, "", 0};
+
+    Lapiseira(float calibre) : calibre{calibre}
+    {
     }
 
-}; 
+    bool inserir_grafite(Grafite g)
+    {
+        if (grafite.calibre != 0.0)
+        {
+            cout << "Lapiseira já tem grafite" << '\n';
+            return false;
+        }
 
+        if (calibre != g.calibre)
+        {
+            cout << "Calibre incompatível" << '\n';
+            return false;
+        }
+        grafite = g;
+        return true;
+    }
 
-int main(){
+    void remover()
+    {
+        grafite = Grafite{0.0, "", 0};
+    }
 
+    void write(int folhas)
+    {
+
+        if (grafite.tamanho == 0)
+        {
+            cout << "Não há grafite" << '\n';
+        }
+
+        if (grafite.dureza == "HB")
+        {
+            int contador = 0;
+            while (folhas != 0)
+            {
+
+                folhas--;
+                contador++;
+                grafite.tamanho -= 1;
+                if (grafite.tamanho <= 0)
+                {
+                    cout << "O grafite acabou" << '\n';
+                    remover();
+
+                    break;
+                }
+            }
+
+            cout << "Foram possíveis escrever " + to_string(contador) + " folhas" << '\n';
+        }
+
+        if (grafite.dureza == "2B")
+        {
+            int contador = 0;
+            while (folhas != 0)
+            {
+
+                folhas--;
+                contador++;
+                grafite.tamanho -= 2;
+                if (grafite.tamanho <= 0)
+                {
+                    cout << "O grafite acabou" << '\n';
+                    remover();
+
+                    break;
+                }
+            }
+            cout << "Foram possíveis escrever " + to_string(contador) + " folhas" << '\n';
+        }
+
+        if (grafite.dureza == "4B")
+        {
+            int contador = 0;
+            while (folhas != 0)
+            {
+
+                folhas--;
+                contador++;
+                grafite.tamanho -= 4;
+                if (grafite.tamanho <= 0)
+                {
+                    cout << "O grafite acabou" << '\n';
+                    remover();
+
+                    break;
+                }
+            }
+            cout << "Foram possíveis escrever " + to_string(contador) + " folhas" << '\n';
+        }
+
+        if (grafite.dureza == "6B")
+        {
+            int contador = 0;
+            while (folhas != 0)
+            {
+
+                folhas--;
+                contador++;
+                grafite.tamanho -= 6;
+                if (grafite.tamanho <= 0)
+                {
+                    cout << "O grafite acabou" << '\n';
+                    remover();
+                    break;
+                }
+            }
+            cout << "Foram possíveis escrever " + to_string(contador) + " folhas" << '\n';
+        }
+    }
+
+    string toString()
+    {
+        string object = "Calibre: " + to_string(calibre) + "\n\n" + "Grafite: " + "\n" + grafite.toString();
+        cout << object << '\n';
+        return object;
+    }
+};
+
+int main()
+{
+
+    Grafite a{1.0, "HB", 5};
+    Lapiseira p{1.0};
+    p.inserir_grafite(a);
+    p.write(3);
 }
